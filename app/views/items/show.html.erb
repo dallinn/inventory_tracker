@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @item.body %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @item.count %>
+</p>
+
+<strong><u>Comments</u></strong>
+
+<% @comments.each do |comment| %>
+	<li>	
+	<%= comment.body %>
+	</li>
+<% end %>
+
+<br>
+ 
+<%= form_for [@item, @new_comment] do |f| %>
+  <%= f.text_area :body, :placeholder => 'Leave a comment' %>
+  <%= f.submit "Post comment" %>
+<% end %>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
